@@ -1,142 +1,588 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hidden Gems | Propuesta Digital (Precios Accesibles COP)</title>
+    <title>Hidden Gems | Propuesta Digital</title>
     <style>
         :root {
-            --primary: #4f46e5;
-            --primary-dark: #3730a3;
-            --secondary: #10b981;
-            --bg-dark: #0f172a;
-            --bg-card: #1e293b;
-            --text-light: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent: #f59e0b;
+            --primary-color: #0d1b2a;
+            --accent-color: #3a86ff;
+            --accent-light: #e8f1ff;
+            --bg-body: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --green-badge: #10b981;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--bg-dark); color: var(--text-light); line-height: 1.6; padding-bottom: 60px; }
-        header { background: linear-gradient(135deg, var(--primary-dark), var(--bg-dark)); padding: 40px 20px; text-align: center; border-bottom: 2px solid var(--primary); }
-        header h1 { font-size: 2.2rem; color: #ffffff; margin-bottom: 10px; }
-        header p { color: var(--text-muted); font-size: 1rem; }
-        .badge { display: inline-block; background: var(--secondary); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 0.85rem; margin-bottom: 15px; font-weight: bold; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 20px; }
-        .card { background: var(--bg-card); border-radius: 12px; padding: 20px; border: 1px solid #334155; }
-        .price-tag { color: var(--secondary); font-size: 1.4rem; font-weight: bold; margin: 10px 0; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; background: var(--bg-card); border-radius: 8px; overflow: hidden; }
-        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #334155; font-size: 0.95rem; }
-        th { background-color: var(--primary-dark); color: #fff; }
-        .cta-btn { display: inline-block; background: var(--secondary); color: #fff; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; margin-top: 15px; text-align: center; }
-        footer { text-align: center; padding: 30px; color: var(--text-muted); border-top: 1px solid #334155; margin-top: 40px; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        .top-bar {
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            padding: 12px 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar .brand {
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--primary-color);
+        }
+
+        header {
+            background-color: #ffffff;
+            padding: 50px 20px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .subtitle-tag {
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .badge-year {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .section-num {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            background: var(--accent-light);
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        /* GRID RUTA DE TRABAJO */
+        .route-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .route-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .route-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            border-color: var(--accent-color);
+        }
+
+        .route-step {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+        }
+
+        .route-card h4 {
+            font-size: 1.05rem;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .route-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* STATS DISPLAY */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* LEAD & INSIGHT CARDS */
+        .box-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .box-card h3 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .box-card p {
+            font-size: 1rem;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* CHANNELS GRID */
+        .channels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .channel-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .channel-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .channel-role {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .channel-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .channel-payout {
+            background: var(--bg-body);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* TABLE STYLING */
+        .table-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 50px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--bg-body);
+            color: var(--primary-color);
+            padding: 15px 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        td {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* EXECUTION STEPS */
+        .execution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .execution-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 25px;
+        }
+
+        .execution-card h4 {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .execution-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .cta-container {
+            text-align: center;
+            background: var(--primary-color);
+            color: #ffffff;
+            border-radius: 16px;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        .cta-container h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .cta-container p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            background-color: var(--green-badge);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: background 0.2s ease;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #059669;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 60px;
+        }
     </style>
 </head>
 <body>
 
+    <div class="top-bar">
+        <span class="brand">HIDDEN GEMS BOGOTÁ</span>
+        <span>MERCADO MULTILATERAL UNIVERSITARIO</span>
+    </div>
+
     <header>
-        <span class="badge">PRESUPUESTO AJUSTADO A COP</span>
-        <h1>HIDDEN GEMS BOGOTÁ</h1>
-        <p>Estrategia Digital Hiperlocal para Universitarios — Cero Sobrecostos en Campus</p>
+        <span class="subtitle-tag">PROPUESTA DIGITAL</span>
+        <h1>Convertir interés en confianza</h1>
+        <p>Estrategia digital de Hidden Gems construida a partir de las 15 entrevistas de campo, el análisis de Google Trends y el presupuesto de publicidad para dos meses en Bogotá.</p>
+        <span class="badge-year">PROPUESTA 2026</span>
     </header>
 
     <div class="container">
 
-        <!-- PLANES Y PRECIOS UNIVERSITARIOS -->
-        <section style="margin-bottom: 40px;">
-            <h2 style="color: var(--primary); margin-bottom: 15px;">Planes Flexibles para Emprendedores del Campus</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Plan Semilla</h3>
-                    <div class="price-tag">$0 COP <small style="font-size: 0.8rem; color: var(--text-muted);">/ mes</small></div>
-                    <p style="color: var(--text-muted);">Para estudiantes que inician. Publica hasta 3 productos sin pagar comisiones ni mensualidad durante el primer mes.</p>
-                </div>
-                <div class="card" style="border-color: var(--primary);">
-                    <h3>Plan Emprendedor</h3>
-                    <div class="price-tag">$20.000 COP <small style="font-size: 0.8rem; color: var(--text-muted);">/ mes + 8% venta</small></div>
-                    <p style="color: var(--text-muted);">Para negocios en crecimiento. Incluye hasta 10 productos y reportes de ventas por menos de $670 COP al día.</p>
-                </div>
-                <div class="card">
-                    <h3>Plan Marca Pro</h3>
-                    <div class="price-tag">$45.000 COP <small style="font-size: 0.8rem; color: var(--text-muted);">/ mes + 8% venta</small></div>
-                    <p style="color: var(--text-muted);">Catálogo ilimitado, visibilidad prioritaria en la vitrina digital y sello de calidad/salubridad verificado.</p>
-                </div>
+        <!-- 01 RUTA DE TRABAJO -->
+        <div class="section-header">
+            <span class="section-num">01</span>
+            <h2 class="section-title">Ruta de Trabajo</h2>
+        </div>
+        <div class="route-grid">
+            <div class="route-card">
+                <div class="route-step">01</div>
+                <h4>Revisar al cliente</h4>
+                <p>Partir de 15 entrevistas (N=15) para identificar hábitos de compra e ineficiencias comerciales.</p>
             </div>
-        </section>
+            <div class="route-card">
+                <div class="route-step">02</div>
+                <h4>Encontrar patrones</h4>
+                <p>Usar Google Trends en Bogotá para observar búsquedas sobre catálogo virtual y domicilios en campus.</p>
+            </div>
+            <div class="route-card">
+                <div class="route-step">03</div>
+                <h4>Definir LEAD e INSIGHT</h4>
+                <p>Establecer quién es el cliente objetivo y qué patrón de comportamiento determina la compra.</p>
+            </div>
+            <div class="route-card">
+                <div class="route-step">04</div>
+                <h4>Asignar canales</h4>
+                <p>TikTok para descubrimiento, Instagram para confianza, Facebook para apoyo y Google para búsqueda.</p>
+            </div>
+            <div class="route-card">
+                <div class="route-step">05</div>
+                <h4>Preparar contenido</h4>
+                <p>Crear publicaciones con inventario real, precios en COP, criterios de salubridad y enlace directo.</p>
+            </div>
+            <div class="route-card">
+                <div class="route-step">06</div>
+                <h4>Lanzar el piloto</h4>
+                <p>Trabajar con la oferta del campus aplicando el presupuesto de 2 meses ($600.000 COP total).</p>
+            </div>
+            <div class="route-card">
+                <div class="route-step">07</div>
+                <h4>Medir y ajustar</h4>
+                <p>Registrar consultas, conversiones a WhatsApp y preguntas repetidas para optimizar la pauta.</p>
+            </div>
+        </div>
 
-        <!-- PRESUPUESTO PUBLICITARIO BILINGÜE Y ACCESIBLE -->
-        <section style="margin-bottom: 40px;">
-            <h2 style="color: var(--primary); margin-bottom: 15px;">Inversión Publicitaria Optimizada (60 Días / $600.000 COP)</h2>
+        <!-- 02 QUÉ ENCONTRAMOS -->
+        <div class="section-header">
+            <span class="section-num">02</span>
+            <h2 class="section-title">Qué Encontramos</h2>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">15</div>
+                <div class="stat-label">Personas participaron en la investigación cualitativa (N=15)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">73.3%</div>
+                <div class="stat-label">Reportó fuga comercial en cotizaciones o pérdida de contactos</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">66.7%</div>
+                <div class="stat-label">Presenta ineficiencia en marketing digital y pauta no calificada</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">80-90</div>
+                <div class="stat-label">Puntos de interés constante en Google Trends para "Catálogo Virtual"</div>
+            </div>
+        </div>
+
+        <!-- 03 LEAD -->
+        <div class="section-header">
+            <span class="section-num">03</span>
+            <h2 class="section-title">LEAD — ¿A quién queremos llegar?</h2>
+        </div>
+        <div class="box-card">
+            <h3>Perfil de Público Universitario</h3>
+            <p>Estudiantes universitarios (19 a 23 años) pertenecientes a instituciones de Bogotá (Javeriana, Piloto, Central, Santo Tomás y CityU) con ingresos limitados que buscan snacks, papelería y detalles entre $3.000 COP y $15.000 COP, junto con emprendedores del campus que necesitan digitalizar su catálogo sin costos fijos elevados.</p>
+        </div>
+
+        <!-- 04 INSIGHT -->
+        <div class="section-header">
+            <span class="section-num">04</span>
+            <h2 class="section-title">INSIGHT — ¿Qué patrón encontramos?</h2>
+        </div>
+        <div class="box-card">
+            <h3>Patrón de Decisión Estudiantil</h3>
+            <p>El estudiante universitario no abandona la compra por falta de interés, sino por la fricción que le genera no saber la ubicación exacta del vendedor, dudar de la higiene del producto o no tener un canal de contacto directo e inmediato con precio claro en COP al momento de tomar la decisión.</p>
+        </div>
+
+        <!-- 05 PROPUESTA DE CANALES -->
+        <div class="section-header">
+            <span class="section-num">05</span>
+            <h2 class="section-title">Propuesta de Canales</h2>
+        </div>
+        <div class="channels-grid">
+            <div class="channel-card">
+                <span class="channel-name">TikTok</span>
+                <span class="channel-role">Alcance y descubrimiento</span>
+                <p class="channel-desc">Videos cortos, detrás de cámaras, preparación higiénica de alimentos y tendencias del campus para generar viralidad orgánica.</p>
+                <div class="channel-payout"><span>Pauta: $0 COP</span> <span>0% del total</span></div>
+            </div>
+            <div class="channel-card">
+                <span class="channel-name">Instagram</span>
+                <span class="channel-role">Producto y confianza</span>
+                <p class="channel-desc">Fotografías verificadas, catálogo estructurado, disponibilidad en tiempo real y botón directo de contacto a WhatsApp Business.</p>
+                <div class="channel-payout"><span>Pauta: $6.000 COP/día</span> <span>60% del total</span></div>
+            </div>
+            <div class="channel-card">
+                <span class="channel-name">Facebook</span>
+                <span class="channel-role">Publicidad y apoyo</span>
+                <p class="channel-desc">Canal de soporte para promocionar catálogo, retargeting a usuarios interesados y cobertura a comunidad universitaria extendida.</p>
+                <div class="channel-payout"><span>Pauta: $1.000 COP/día</span> <span>10% del total</span></div>
+            </div>
+            <div class="channel-card">
+                <span class="channel-name">Google Ads</span>
+                <span class="channel-role">Captura de búsquedas</span>
+                <p class="channel-desc">Captura directa a personas que buscan "comida económica campus", "impresiones urgentes Chapinero" o "catálogo universitario".</p>
+                <div class="channel-payout"><span>Pauta: $3.000 COP/día</span> <span>30% del total</span></div>
+            </div>
+        </div>
+
+        <!-- 06 INVERSIÓN -->
+        <div class="section-header">
+            <span class="section-num">06</span>
+            <h2 class="section-title">Inversión (2 Meses)</h2>
+        </div>
+        <div class="table-container">
             <table>
                 <thead>
                     <tr>
                         <th>Canal</th>
-                        <th>Inversión Diaria (COP)</th>
-                        <th>Total 2 Meses (COP)</th>
-                        <th>Estrategia Universitaria</th>
+                        <th>Diario (COP)</th>
+                        <th>Mensual (COP)</th>
+                        <th>2 Meses (COP)</th>
+                        <th>Enfoque Principal</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><strong>Instagram Ads</strong></td>
                         <td>$6.000 COP</td>
+                        <td>$180.000 COP</td>
                         <td>$360.000 COP</td>
-                        <td>Muestra fotos reales y redirige el tráfico directo a WhatsApp.</td>
+                        <td>Atracción visual, catálogo y WhatsApp</td>
                     </tr>
                     <tr>
                         <td><strong>Google Ads</strong></td>
                         <td>$3.000 COP</td>
+                        <td>$90.000 COP</td>
                         <td>$180.000 COP</td>
-                        <td>Captura búsquedas como "comida barata campus", "impresiones Chapinero".</td>
+                        <td>Búsquedas directas e intención de compra</td>
                     </tr>
                     <tr>
                         <td><strong>Facebook Ads</strong></td>
                         <td>$1.000 COP</td>
+                        <td>$30.000 COP</td>
                         <td>$60.000 COP</td>
-                        <td>Apoyo de retargeting para estudiantes y residentes cercanos.</td>
+                        <td>Apoyo publicitario y retargeting</td>
                     </tr>
                     <tr>
                         <td><strong>TikTok Ads</strong></td>
                         <td>$0 COP</td>
                         <td>$0 COP</td>
-                        <td>Estrategia 100% orgánica mediante contenido viral en el campus.</td>
+                        <td>$0 COP</td>
+                        <td>Contenido 100% orgánico y viralidad</td>
                     </tr>
                 </tbody>
             </table>
-        </section>
+        </div>
 
-        <!-- CATALOGO PROMEDIO ACCESIBLE -->
-        <section style="margin-bottom: 40px;">
-            <h2 style="color: var(--primary); margin-bottom: 15px;">Precios Promedio de Productos para Compradores</h2>
-            <div class="grid">
-                <div class="card">
-                    <h4 style="color: var(--accent);">Alimentos y Snacks</h4>
-                    <p class="price-tag" style="font-size: 1.1rem;">$4.000 COP - $8.000 COP</p>
-                    <p style="color: var(--text-muted);">Sándwiches artesanales, granizados, galletas y repostería con empaque sellado e higiénico.</p>
-                </div>
-                <div class="card">
-                    <h4 style="color: var(--accent);">Detalles y Regalos</h4>
-                    <p class="price-tag" style="font-size: 1.1rem;">$8.000 COP - $15.000 COP</p>
-                    <p style="color: var(--text-muted);">Amigurumis, floristería para fechas especiales y accesorios de moda local.</p>
-                </div>
-                <div class="card">
-                    <h4 style="color: var(--accent);">Servicios de Papelería</h4>
-                    <p class="price-tag" style="font-size: 1.1rem;">$200 COP - $500 COP / pag</p>
-                    <p style="color: var(--text-muted);">Impresiones urgentes con punto de entrega exprés en los túneles universitarios.</p>
-                </div>
+        <!-- 07 EJECUCIÓN -->
+        <div class="section-header">
+            <span class="section-num">07</span>
+            <h2 class="section-title">Ejecución — Del Análisis a la Acción</h2>
+        </div>
+        <div class="execution-grid">
+            <div class="execution-card">
+                <h4>Antes de publicar</h4>
+                <p>Verificar fotografías reales, inventario en tiempo real, precios exactos en COP, criterios de salubridad, condiciones de recogida en campus y enlace directo a WhatsApp Business.</p>
             </div>
-        </section>
+            <div class="execution-card">
+                <h4>Durante la campaña</h4>
+                <p>Responder rápidamente por WhatsApp, coordinar entregas sin sobrecosto en puntos de recogida (*Pick-Up Points*) y registrar qué producto genera mayor número de chats.</p>
+            </div>
+            <div class="execution-card">
+                <h4>Después de probar</h4>
+                <p>Comparar consultas, ventas efectivas y motivos de deserción para decidir qué palabras clave de Google Ads mantener y cómo ajustar el presupuesto de Instagram.</p>
+            </div>
+        </div>
 
-        <section style="text-align: center; margin-top: 30px;">
-            <a href="https://wa.me/" class="cta-btn" target="_blank">Explorar Catálogo en WhatsApp</a>
-        </section>
+        <!-- CTA -->
+        <div class="cta-container">
+            <h2>¿Quieres explorar la vitrina de Hidden Gems?</h2>
+            <p>Conecta con los emprendimientos verificados de tu campus sin cargos de envío.</p>
+            <a href="https://wa.me/" class="btn-whatsapp" target="_blank">Contactar por WhatsApp</a>
+        </div>
 
     </div>
 
     <footer>
-        <p>&copy; 2026 Hidden Gems Bogotá — Todos los precios adaptados a Pesos Colombianos (COP).</p>
+        <p>&copy; 2026 Hidden Gems Bogotá — Propuesta Digital de Redes Sociales, Captura Digital y Presupuesto de Publicidad.</p>
     </footer>
 
 </body>
